@@ -155,7 +155,14 @@ export default function RegisterScreen({ navigation }) {
                 placeholderTextColor={COLORS.textSecondary}
                 value={email}
                 onChangeText={validateEmail}
-                onFocus={() => emailWrapperRef.current?.setNativeProps({ style: [styles.inputWrapper, styles.inputWrapperFocused] })}
+                onFocus={() =>
+                  emailWrapperRef.current?.setNativeProps({
+                    style: [
+                      styles.inputWrapper,
+                      emailError ? styles.inputWrapperError : styles.inputWrapperFocused,
+                    ],
+                  })
+                }
                 onBlur={() => emailWrapperRef.current?.setNativeProps({ style: [styles.inputWrapper, !!emailError && styles.inputWrapperError] })}
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -176,7 +183,14 @@ export default function RegisterScreen({ navigation }) {
                 placeholderTextColor={COLORS.textSecondary}
                 value={password}
                 onChangeText={validatePassword}
-                onFocus={() => passWrapperRef.current?.setNativeProps({ style: [styles.inputWrapper, styles.inputWrapperFocused] })}
+                onFocus={() =>
+                  passWrapperRef.current?.setNativeProps({
+                    style: [
+                      styles.inputWrapper,
+                      passwordError ? styles.inputWrapperError : styles.inputWrapperFocused,
+                    ],
+                  })
+                }
                 onBlur={() => passWrapperRef.current?.setNativeProps({ style: [styles.inputWrapper, !!passwordError && styles.inputWrapperError] })}
                 secureTextEntry={!showPassword}
                 returnKeyType="next"
@@ -198,7 +212,14 @@ export default function RegisterScreen({ navigation }) {
                 placeholderTextColor={COLORS.textSecondary}
                 value={confirmPassword}
                 onChangeText={validateConfirm}
-                onFocus={() => confirmWrapperRef.current?.setNativeProps({ style: [styles.inputWrapper, styles.inputWrapperFocused] })}
+                onFocus={() =>
+                  confirmWrapperRef.current?.setNativeProps({
+                    style: [
+                      styles.inputWrapper,
+                      confirmError ? styles.inputWrapperError : styles.inputWrapperFocused,
+                    ],
+                  })
+                }
                 onBlur={() => confirmWrapperRef.current?.setNativeProps({ style: [styles.inputWrapper, !!confirmError && styles.inputWrapperError] })}
                 secureTextEntry={!showConfirm}
                 returnKeyType="done"
@@ -322,7 +343,14 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.25, shadowRadius: 8, elevation: 4,
   },
-  inputWrapperError: { borderColor: COLORS.error },
+  inputWrapperError: {
+  borderColor: COLORS.error,
+  shadowColor: COLORS.error,
+  shadowOffset: { width: 0, height: 0 },
+  shadowOpacity: 0.25,
+  shadowRadius: 8,
+  elevation: 4,
+  },
   input: { flex: 1, fontSize: 15, color: COLORS.textPrimary, paddingVertical: 0 },
   eyeButton: { padding: 4 },
   errorText: { fontSize: 11, color: COLORS.error, marginTop: 5, marginLeft: 2 },
