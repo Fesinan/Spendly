@@ -52,3 +52,5 @@ __pycache__/
 # pip
 back-end/.venv/
 back-end/.env/
+back-end/venv/
+back-end/env/
